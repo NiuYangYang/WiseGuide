@@ -7,8 +7,9 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import {Platform, ScrollView, StyleSheet, Text, View} from 'react-native';
 import codePush from "react-native-code-push";
+import QRCode from 'react-native-qrcode';
 
 const instructions = Platform.select({
     ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -32,7 +33,7 @@ export default class App extends Component<Props> {
     }
     render() {
         return (
-            <View style={styles.container}>
+            <ScrollView style={styles.container}>
                 <Text style={styles.welcome}>{Mmm.textImages}</Text>
                 <Text style={styles.instructions}>To get started, edit App.js</Text>
                 <Text style={styles.instructions}>{instructions}</Text>
@@ -46,7 +47,8 @@ export default class App extends Component<Props> {
                         Sign in with Facebook
                     </Text>
                 </LinearGradient>
-            </View>
+                <QRCode value={'二维码'} bgColor='#000' fgColor='#fff' size={165}/>
+            </ScrollView>
         );
     }
 }
@@ -54,8 +56,6 @@ App = codePush(App);
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
         backgroundColor: '#F5FCFF',
     },
     welcome: {

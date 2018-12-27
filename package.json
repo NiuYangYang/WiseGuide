@@ -16,7 +16,9 @@
     "react-native-code-push": "^5.5.1",
     "react-native-fast-image": "^5.1.1",
     "react-native-keyboard-aware-scroll-view": "^0.8.0",
-    "react-native-linear-gradient": "^2.5.3"
+    "react-native-linear-gradient": "^2.5.3",
+    "react-native-md5": "^1.0.0",
+    "react-native-qrcode": "^0.2.7"
   },
   "devDependencies": {
     "@babel/plugin-proposal-decorators": "^7.2.3",
