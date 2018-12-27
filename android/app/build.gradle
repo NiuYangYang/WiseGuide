@@ -75,8 +75,12 @@ import com.android.build.OutputFile
 project.ext.react = [
     entryFile: "index.js"
 ]
+if (System.properties['os.name'].contains("Mac")) {
+    project.ext.react.nodeExecutableAndArgs = ["/usr/local/bin/node"]
+}
 
 apply from: "../../node_modules/react-native/react.gradle"
+apply from: "../../node_modules/react-native-code-push/android/codepush.gradle"
 
 /**
  * Set this to true to create two separate APKs instead of one:
@@ -107,6 +111,14 @@ android {
             abiFilters "armeabi-v7a", "x86"
         }
     }
+    signingConfigs {
+        release {
+            storeFile file('../BiGuiYuan.jks')
+            storePassword "BiGuiYuan2018"
+            keyAlias "BiGuiYuan"
+            keyPassword "BiGuiYuan2018"
+        }
+    }
     splits {
         abi {
             reset()
@@ -116,7 +128,14 @@ android {
         }
     }
     buildTypes {
+        debug {
+            signingConfig signingConfigs.release
+            minifyEnabled enableProguardInReleaseBuilds
+            buildConfigField "String", "CODEPUSH_KEY", '"NZdV0t0xN04bbIc1b6k7VzDzr3Xg3c4f1f80-af82-409c-bc85-8effb36174f5"'
+        }
         release {
+            signingConfig signingConfigs.release
+            buildConfigField "String", "CODEPUSH_KEY", '"5tzNLoxbm952KpKgMqe9TRk59Wkb3c4f1f80-af82-409c-bc85-8effb36174f5"'
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
@@ -140,6 +159,7 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
     implementation "com.facebook.react:react-native:+"  // From node_modules
+    implementation project(':react-native-code-push')
 }
 
 // Run this once to be able to run the application with BUCK
