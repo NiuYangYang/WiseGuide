@@ -40,6 +40,7 @@
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		B2726CD021D484DD0045D551 /* libCodePush.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B2726CA821D484C90045D551 /* libCodePush.a */; };
 		B2726CD221D484F80045D551 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B2726CD121D484F80045D551 /* libz.tbd */; };
+		B2726D5C21D4EC380045D551 /* libFastImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B2726D3621D4EC280045D551 /* libFastImage.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -330,6 +331,13 @@
 			remoteGlobalIDString = F886647B1F4ADB500036D01B;
 			remoteInfo = "CodePush-tvOS";
 		};
+		B2726D3521D4EC280045D551 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B2726D2E21D4EC280045D551 /* FastImage.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A287971D1DE0C0A60081BDFA;
+			remoteInfo = FastImage;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -360,6 +368,7 @@
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
 		B2726CA221D484C90045D551 /* CodePush.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CodePush.xcodeproj; path = "../node_modules/react-native-code-push/ios/CodePush.xcodeproj"; sourceTree = "<group>"; };
 		B2726CD121D484F80045D551 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		B2726D2E21D4EC280045D551 /* FastImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FastImage.xcodeproj; path = "../node_modules/react-native-fast-image/ios/FastImage.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -375,6 +384,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2726D5C21D4EC380045D551 /* libFastImage.a in Frameworks */,
 				B2726CD221D484F80045D551 /* libz.tbd in Frameworks */,
 				B2726CD021D484DD0045D551 /* libCodePush.a in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
@@ -563,6 +573,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				B2726D2E21D4EC280045D551 /* FastImage.xcodeproj */,
 				B2726CA221D484C90045D551 /* CodePush.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
@@ -628,6 +639,14 @@
 			children = (
 				B2726CA821D484C90045D551 /* libCodePush.a */,
 				B2726CAA21D484C90045D551 /* libCodePush.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B2726D2F21D4EC280045D551 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B2726D3621D4EC280045D551 /* libFastImage.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -746,6 +765,10 @@
 				{
 					ProductGroup = B2726CA321D484C90045D551 /* Products */;
 					ProjectRef = B2726CA221D484C90045D551 /* CodePush.xcodeproj */;
+				},
+				{
+					ProductGroup = B2726D2F21D4EC280045D551 /* Products */;
+					ProjectRef = B2726D2E21D4EC280045D551 /* FastImage.xcodeproj */;
 				},
 				{
 					ProductGroup = 00C302A81ABCB8CE00DB3ED1 /* Products */;
@@ -1078,6 +1101,13 @@
 			fileType = archive.ar;
 			path = libCodePush.a;
 			remoteRef = B2726CA921D484C90045D551 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B2726D3621D4EC280045D551 /* libFastImage.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libFastImage.a;
+			remoteRef = B2726D3521D4EC280045D551 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
