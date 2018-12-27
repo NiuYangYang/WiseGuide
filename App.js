@@ -22,6 +22,7 @@ type Props = {};
 import {observer} from "mobx-react";
 import Mmm from './Mmm'
 import RemoteImageView from "./RemoteImageView";
+import LinearGradient from 'react-native-linear-gradient'
 
 @observer
 export default class App extends Component<Props> {
@@ -40,6 +41,11 @@ export default class App extends Component<Props> {
                     uri={'https://gss0.baidu.com/7LsWdDW5_xN3otqbppnN2DJv/space/pic/item/c2cec3fdfc039245371f353f8c94a4c27d1e255c.jpg'}
                     placeholder={require('./btn_normal.png')}//静态图片, 在remote图片未加载出来时的占位图片(默认背景图)
                 />
+                <LinearGradient colors={['#4c669f', '#3b5998', '#192f6a']} style={styles.linearGradient}>
+                    <Text style={styles.buttonText}>
+                        Sign in with Facebook
+                    </Text>
+                </LinearGradient>
             </View>
         );
     }
@@ -61,5 +67,18 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         color: '#333333',
         marginBottom: 5,
+    },
+    linearGradient: {
+        paddingLeft: 15,
+        paddingRight: 15,
+        borderRadius: 5
+    },
+    buttonText: {
+        fontSize: 18,
+        fontFamily: 'Gill Sans',
+        textAlign: 'center',
+        margin: 10,
+        color: '#ffffff',
+        backgroundColor: 'transparent',
     },
 });
