@@ -10,7 +10,7 @@ import React, {Component} from 'react';
 import {Image, Platform, ScrollView, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import codePush from "react-native-code-push";
 import QRCode from 'react-native-qrcode';
-import SYImagePicker from 'react-native-syan-image-picker';
+import SyanImagePicker from 'react-native-syan-image-picker';
 
 const instructions = Platform.select({
     ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -63,9 +63,21 @@ export default class App extends Component<Props> {
         }, 255)
     }
 
+    _camera = () => {
+        let _this = this;
+        SyanImagePicker.openCamera(options,(err, photos) =>{
+            if (!err) {
+                console.log(photos)
+                if(photos.length) {
+                    _this.setState({image: photos[0].uri})
+                }
+            }
+        })
+    }
+
     _pickerHandle = () => {
         let _this = this;
-        SYImagePicker.asyncShowImagePicker(options)
+        SyanImagePicker.asyncShowImagePicker(options)
             .then(photos => {
                 // 选择成功
                 console.log(photos)
@@ -92,6 +104,9 @@ export default class App extends Component<Props> {
                 <Image source={{uri: this.state.image}} style={{width: 200, height: 200}}/>
                 <TouchableOpacity style={{height: 50}} onPress={this._pickerHandle}>
                     <Text>选择图片</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={{height: 50}} onPress={this._camera}>
+                    <Text>拍照</Text>
                 </TouchableOpacity>
                 <LinearGradient colors={['#4c669f', '#3b5998', '#192f6a']} style={styles.linearGradient}>
                     <Text style={styles.buttonText}>
