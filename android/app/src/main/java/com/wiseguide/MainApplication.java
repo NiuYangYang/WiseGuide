@@ -11,6 +11,7 @@ import com.microsoft.codepush.react.CodePush;
 import com.dylanvann.fastimage.FastImageViewPackage;
 import com.BV.LinearGradient.LinearGradientPackage;
 import com.reactnativecomponent.barcode.RCTCapturePackage;
+import com.reactlibrary.RNSyanImagePickerPackage;
 
 import java.util.Arrays;
 import java.util.List;
@@ -36,7 +37,8 @@ public class MainApplication extends Application implements ReactApplication {
               new CodePush(BuildConfig.CODEPUSH_KEY, MainApplication.this, BuildConfig.DEBUG),
               new FastImageViewPackage(),
               new LinearGradientPackage(),
-              new RCTCapturePackage()
+              new RCTCapturePackage(),
+              new RNSyanImagePickerPackage()
               );
     }
 

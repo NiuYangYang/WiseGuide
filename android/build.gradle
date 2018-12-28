@@ -7,6 +7,7 @@ buildscript {
         compileSdkVersion = 27
         targetSdkVersion = 26
         supportLibVersion = "27.1.1"
+        glideVersion = "4.5.0" // 解决fast image库中Glide(v 4.7.1)与图片选择suan image picker库中Glide(v4.5.0 无法修改)版本不一致的问题, 由fase image提供
     }
     repositories {
         google()
@@ -33,6 +34,7 @@ allprojects {
             // Local Maven repo containing AARs with JSC library built for Android
             url "$rootDir/../node_modules/jsc-android/dist"
         }
+        maven { url "https://jitpack.io" }
     }
 }
 

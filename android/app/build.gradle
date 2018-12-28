@@ -169,6 +169,7 @@ dependencies {
     implementation project(':react-native-fast-image')
     implementation project(':react-native-linear-gradient')
     implementation project(':rn-app-smart-barcode')
+    implementation project(':react-native-syan-image-picker')
 }
 
 // Run this once to be able to run the application with BUCK

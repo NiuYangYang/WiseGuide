@@ -20,7 +20,9 @@
     "react-native-md5": "^1.0.0",
     "react-native-qrcode": "^0.2.7",
     "react-native-router-flux": "^4.0.6",
+    "react-native-smart-timer-enhance": "^1.0.3",
     "react-native-storage": "^1.0.0-beta.1",
+    "react-native-syan-image-picker": "^0.2.2",
     "rn-app-smart-barcode": "^1.0.1",
     "teaset": "^0.5.10"
   },

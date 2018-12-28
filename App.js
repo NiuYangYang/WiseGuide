@@ -7,9 +7,10 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, ScrollView, StyleSheet, Text, View} from 'react-native';
+import {Image, Platform, ScrollView, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import codePush from "react-native-code-push";
 import QRCode from 'react-native-qrcode';
+import SYImagePicker from 'react-native-syan-image-picker';
 
 const instructions = Platform.select({
     ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -17,6 +18,20 @@ const instructions = Platform.select({
     'Double tap R on your keyboard to reload,\n' +
     'Shake or press menu button for dev menu',
 });
+
+const options = {
+    imageCount: 4,             // 最大选择图片数目，默认6
+    isCamera: true,            // 是否允许用户在内部拍照，默认true
+    isCrop: false,             // 是否允许裁剪，默认false
+    // CropW: ~~(SCREEN_WIDTH * 0.6),    // 裁剪宽度，默认屏幕宽度60%
+    // CropH: ~~(SCREEN_HEIGHT * 0.6),    // 裁剪高度，默认屏幕宽度60%
+    isGif: false,              // 是否允许选择GIF，默认false，暂无回调GIF数据
+    showCropCircle: false,     // 是否显示圆形裁剪区域，默认false
+    // circleCropRadius: SCREEN_WIDTH/2,  // 圆形裁剪半径，默认屏幕宽度一半
+    showCropFrame: true,       // 是否显示裁剪区域，默认true
+    showCropGrid: false,       // 是否隐藏裁剪区域网格，默认false
+    quality: 90                // 压缩质量
+};
 
 type Props = {};
 
@@ -28,9 +43,41 @@ import LinearGradient from 'react-native-linear-gradient'
 @observer
 export default class App extends Component<Props> {
 
+    // 构造
+    constructor(props) {
+        super(props);
+        // 初始状态
+        this.state = {
+            viewAppear: false,
+            image: '1',
+        };
+    }
+
     componentDidMount() {
         Mmm.clearData();
+
+        setTimeout( () => {
+            this.setState({
+                viewAppear: true,
+            })
+        }, 255)
     }
+
+    _pickerHandle = () => {
+        let _this = this;
+        SYImagePicker.asyncShowImagePicker(options)
+            .then(photos => {
+                // 选择成功
+                console.log(photos)
+                if(photos.length) {
+                    _this.setState({image: photos[0].uri})
+                }
+            })
+            .catch(err => {
+                // 取消选择，err.message为"取消"
+            })
+    };
+
     render() {
         return (
             <ScrollView style={styles.container}>
@@ -39,9 +86,13 @@ export default class App extends Component<Props> {
                 <Text style={styles.instructions}>{instructions}</Text>
                 <RemoteImageView
                     style={{width:200,height:200}}
-                    uri={'https://gss0.baidu.com/7LsWdDW5_xN3otqbppnN2DJv/space/pic/item/c2cec3fdfc039245371f353f8c94a4c27d1e255c.jpg'}
+                    uri={'https://gss0.baidu.com/7LsWdDW5_xN3otqbppnN2DJv/space/pic/item/c2cec3fdfc039245371f353f8c94a4c27d1e255c.jpg?m=2'}
                     placeholder={require('./btn_normal.png')}//静态图片, 在remote图片未加载出来时的占位图片(默认背景图)
                 />
+                <Image source={{uri: this.state.image}} style={{width: 200, height: 200}}/>
+                <TouchableOpacity style={{height: 50}} onPress={this._pickerHandle}>
+                    <Text>选择图片</Text>
+                </TouchableOpacity>
                 <LinearGradient colors={['#4c669f', '#3b5998', '#192f6a']} style={styles.linearGradient}>
                     <Text style={styles.buttonText}>
                         Sign in with Facebook
